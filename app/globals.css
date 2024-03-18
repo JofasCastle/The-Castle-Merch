@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  img[loading='lazy'] {
+    clip-path: inset(0.6px);
+  }
+}
+.bg-pattern {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 80%, rgb(11, 10, 8) 100%),
+    url('/assets/hero.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+.hero-content {
+  height: 100%;
+  display: flex;
+  gap: 2rem;
+  padding-bottom: 20vh;
+}
+.hero-content > div {
+  max-width: 50%;
+}
+.hero-title {
+  font-size: clamp(1rem, 5vw + 1rem, 4rem);
+  font-weight: 500;
+}
+.hero-text {
+  font-size: clamp(0.2rem, 4vw + 1rem, 2rem);
+  padding-top: 2rem;
+  font-weight: 300;
+  overflow-wrap: break-word;
+}
+
+.hero-categories {
+  display: flex;
+  justify-items: left;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-top: 4rem;
+  font-size: clamp(1rem, 4vw, 1.8rem);
+  font-weight: 200;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    align-items: start;
+    gap: 0;
+  }
+  .hero-content > div {
+    height: auto;
+    max-width: 100%;
+  }
+  .hero-content > *:first-child {
+    order: 2; /* Or any number higher than 1 */
+  }
+
+  .hero-content > *:last-child {
+    order: 1; /* Lower than the first child */
+  }
+  .hero-categories {
+    display: none;
+  }
+}
+
+a,
+input,
+button {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
+}
