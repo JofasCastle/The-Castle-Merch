@@ -36,7 +36,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     <html lang="en" className={GeistSans.variable}>
       <body className="text-black selection:bg-teal-300 dark:bg-defaultdark dark:text-white dark:selection:bg-golden dark:selection:text-white">
         <HeroSection />
-        <Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
           <main>{children}</main>
         </Suspense>
       </body>
