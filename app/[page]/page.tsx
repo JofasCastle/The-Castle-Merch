@@ -30,7 +30,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: { page: string } }) {
   const page = await getPage(params.page);
-
+  console.log(page);
   if (!page) return notFound();
 
   return (

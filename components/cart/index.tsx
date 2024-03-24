@@ -6,9 +6,21 @@ export default async function Cart() {
   const cartId = cookies().get('cartId')?.value;
   let cart;
 
-  if (cartId) {
-    cart = await getCart(cartId);
+  async function getCartAction(cartId: string) {
+    'use server';
+    if (cartId) {
+      const cart = await getCart(cartId);
+      if (cart) {
+        return cart;
+      }
+      return null;
+    }
+    return null;
   }
 
-  return <CartModal cart={cart} />;
+  if (cartId) {
+    cart = await getCartAction(cartId);
+  }
+
+  return <CartModal cart={cart} cartId={cartId as string} getCart={getCartAction} />;
 }

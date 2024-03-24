@@ -9,9 +9,9 @@ export async function HeroSection() {
       <div className="bg-pattern h-svh w-full">
         <Navbar />
         <div className="hero-content mx-16">
-          <div className="items-left flex max-w-7xl flex-col justify-center">
+          <div className="items-left flex max-w-7xl flex-col justify-center text-white">
             <h2 className="hero-title">The Castle's Finest Merch</h2>
-            <p className="hero-text">
+            <p className="hero-text  ">
               Embrace the Spirit of Jofa with The Castle's finest merch! From the stealth of our
               camo gear to our other iconic designs. Wear your gear with pride and be a part of our
               unique tradition – where style meets reverence.

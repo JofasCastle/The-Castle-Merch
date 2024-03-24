@@ -4,6 +4,8 @@ import { ensureStartsWith } from 'lib/utils';
 import { ReactNode, Suspense } from 'react';
 import './globals.css';
 
+import { Providers } from './_helpers/Provides';
+
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -34,12 +36,14 @@ export const metadata = {
 export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={GeistSans.variable}>
-      <body className="text-black selection:bg-teal-300 dark:bg-defaultdark dark:text-white dark:selection:bg-golden dark:selection:text-white">
-        <HeroSection />
-        <Suspense fallback={<div>Loading...</div>}>
-          <main>{children}</main>
-        </Suspense>
-      </body>
+      <Providers>
+        <body className="text-black selection:bg-teal-300 dark:bg-defaultdark dark:text-white dark:selection:bg-golden dark:selection:text-white">
+          <HeroSection />
+          <Suspense fallback={<div>Loading...</div>}>
+            <main className="mt-12">{children}</main>
+          </Suspense>
+        </body>
+      </Providers>
     </html>
   );
 }
