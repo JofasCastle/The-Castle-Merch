@@ -24,9 +24,9 @@ export default function CartModal({
   cartId,
   getCart
 }: {
-  cart: Cart | undefined;
+  cart: Cart | undefined | null;
   cartId: string;
-  getCart: (cartId: string) => Promise<Cart | undefined>;
+  getCart: (cartId: string) => Promise<Cart | null>;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const quantityRef = useRef(cart?.totalQuantity);
@@ -176,8 +176,8 @@ export default function CartModal({
                       <p>Taxes</p>
                       <Price
                         className="text-right text-base text-black dark:text-white"
-                        amount={data.cost.totalTaxAmount.amount}
-                        currencyCode={data.cost.totalTaxAmount.currencyCode}
+                        amount={data?.cost.totalTaxAmount.amount as string}
+                        currencyCode={data?.cost.totalTaxAmount.currencyCode as string}
                       />
                     </div>
                     <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
@@ -188,13 +188,13 @@ export default function CartModal({
                       <p>Total</p>
                       <Price
                         className="text-right text-base text-black dark:text-white"
-                        amount={data.cost.totalAmount.amount}
-                        currencyCode={data.cost.totalAmount.currencyCode}
+                        amount={data?.cost.totalAmount.amount as string}
+                        currencyCode={data?.cost.totalAmount.currencyCode as string}
                       />
                     </div>
                   </div>
                   <Link
-                    href={data.checkoutUrl}
+                    href={data?.checkoutUrl as string}
                     target="_blank"
                     className="block w-full rounded-full bg-blue-600 p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100"
                   >
