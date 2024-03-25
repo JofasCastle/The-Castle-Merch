@@ -1,5 +1,5 @@
 import { HeroSection } from 'components/hero-section';
-import { GeistSans } from 'geist/font/sans';
+import { GeistSans } from 'geist/font';
 import { ensureStartsWith } from 'lib/utils';
 import { ReactNode, Suspense } from 'react';
 import './globals.css';
